@@ -1,0 +1,44 @@
+{%extends 'base.html'%}
+{% block content %}
+{{block.super}}
+
+
+<div class="row mt-5">
+    <div class="col-md-8" style="display: flex; justify-content: center;">
+        <div class="row">
+            {% if profile %}
+                <div class="col-lg-6">
+                    <div class="card">
+                        {% if profile.profile_pic %}
+                    <img src="{{profile.profile_pic.url}}" alt="" class="card-img-top">
+                    {%else%}
+                    <img src="/static/images/profile-removebg-preview.png"
+                        class="card-img-top" alt="My profile picture" style="background-color: #FFDB58;">
+                    {% endif %}
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card-body">
+                        <div style="display: flex; justify-content: space-between;">
+                            <p><b>Username:</b> {{user.username}}</p>
+                            <a href="#" class="btn bg-info">Edit Profile</a>
+                        </div>
+                        <div>
+                            <p><b><b>Fullname: </b>{{profile.fullname}}</b></p>
+                            <h5><b>Bio</b></h5>
+                            <p>{{profile.bio}}</p>
+                        </div>  
+                        
+                        <p><b>Email: </b>{{profile.email}}</p>
+                        <p><b>Phone Number: </b>{{profile.phone_number}}</p>
+                        <p><b>Location: </b>{{profile.hood}}</p>
+                    </div>
+                </div>
+                <div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

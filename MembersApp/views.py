@@ -1,7 +1,8 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate,login,logout
-from .forms import  CreateUserForm
+from .forms import  CreateUserForm,ProfileForm
+from .models import Profile
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -42,3 +43,9 @@ def logoutUser(request):
 def index(request):
     context={}
     return render(request, 'index.html',context)
+
+@login_required(login_url='loginPage')
+def profilePage(request,user_id):
+        profile=Profile.objects.get(id=user_id)
+        contex = {'profile':profile}
+        return render(request, 'profile.html', contex)

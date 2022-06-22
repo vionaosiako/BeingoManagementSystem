@@ -9,25 +9,29 @@
         <div class="col md-12">    
             <div class="jumbotron p-5"> 
                 <div style="display: flex; justify-content: space-between;">
-                    <h2>Manage <b>Savings </b></h2> 
+                    <h2>Manage <b>Members </b></h2> 
                     <button type="button"  class="btn btn-warning"
-                    data-toggle="modal" data-target="#mymodal">Add Savings</button> 
+                    data-toggle="modal" data-target="#mymodal">Add Member</button> 
                 </div>
 
                 <table class="table table-hover table-dark">    
                     <tr>
-                        <th>Name</th>
-                        <th>Amount</th>
-                        <th>Data Contributed</th>
-                        <th>Admin Username</th>
+                        <th>Profile Picture</th>
+                        <th>Full name</th>
+                        <th>Phone number</th>
+                        <th>Location</th>
+                        <th>Date joined</th>
+                        <th>Admin</th>
                         <th>Action</th>
                     </tr>    
 
-                    {% for row in savings %}
+                    {% for row in members %}
                     <tr>
-                        <td>{{row.member_id}}</td>
-                        <td>{{row.amount}}</td> 
-                        <td>{{row.date_contributed}}</td>
+                        <td><img src="{{row.profile_pic.url}}" alt="" width="200px"></td>
+                        <td>{{row.fullname}}</td> 
+                        <td>{{row.phone_number}}</td>
+                        <td>{{row.hood}}</td>
+                        <td>{{row.date_joined}}</td>
                         <td>{{row.admin}}</td>
                         <td>
                             <a href="/updatecategory/{{row.id}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{row.id}}">Edit</a>

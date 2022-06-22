@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate,login,logout
-from .forms import  CreateUserForm,ProfileForm
-from .models import Profile
+from .forms import  CreateUserForm,ProfileForm,SavingsForm,MembersForm
+from .models import Profile,Saving,Member
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -67,4 +67,34 @@ def profileUpdates(request):
 
 @login_required(login_url='loginpage')
 def savings(request):
-    return render(request,'saving.html')
+    current_user=request.user
+    profile = Profile.objects.filter(id=current_user.id).first()
+    savings=Saving.objects.all()
+    if request.method == 'POST':
+        form = SavingsForm(request.POST, request.FILES)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.admin = request.user.profile
+            form.save()
+            return redirect('savings')
+    else:
+        form = SavingsForm()
+    context={'savings':savings, 'form':form}
+    return render(request,'saving.html',context)
+
+@login_required(login_url='loginpage')
+def members(request):
+    current_user=request.user
+    profile = Profile.objects.filter(id=current_user.id).first()
+    members=Member.objects.all()
+    if request.method == 'POST':
+        form = MembersForm(request.POST, request.FILES)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.admin = request.user.profile
+            form.save()
+            return redirect('savings')
+    else:
+        form = MembersForm()
+    context={'members':members, 'form':form}
+    return render(request,'member.html',context)

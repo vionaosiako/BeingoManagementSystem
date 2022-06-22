@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     
     'MembersApp',
     'cloudinary',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [

@@ -49,3 +49,18 @@ def profilePage(request,user_id):
         profile=Profile.objects.get(id=user_id)
         contex = {'profile':profile}
         return render(request, 'profile.html', contex)
+    
+@login_required(login_url='loginPage')
+def profileUpdates(request):
+    current_user=request.user
+    profile = Profile.objects.filter(id=current_user.id).first()
+    if request.method == 'POST':
+        profileform = ProfileForm(request.POST,request.FILES,instance=profile)
+        if  profileform.is_valid:
+            profileform.save(commit=False)
+            profileform.user=request.user
+            profileform.save()
+            return redirect('index')
+    else:
+        form=ProfileForm(instance=profile)
+    return render(request,'editProfile.html',{'form':form})

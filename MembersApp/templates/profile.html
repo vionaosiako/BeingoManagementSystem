@@ -22,7 +22,7 @@
                     <div class="card-body">
                         <div style="display: flex; justify-content: space-between;">
                             <p><b>Username:</b> {{user.username}}</p>
-                            <a href="#" class="btn bg-info">Edit Profile</a>
+                            <a href="{% url 'profileUpdates' %}" class="btn bg-warning">Edit Profile</a>
                         </div>
                         <div>
                             <p><b><b>Fullname: </b>{{profile.fullname}}</b></p>

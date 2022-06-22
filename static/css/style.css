@@ -1,0 +1,55 @@
+*{padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: "Trirong", serif;
+}
+body{
+    background-color: #d9f7f0;
+}
+
+html, body{
+    overflow-x: hidden;
+}
+
+.logo{
+    width: 100%;
+}
+
+.banner{
+    background-image: url('/static/images/chama.jpg');
+    height: 90vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+    /* Sidebar */
+    .sidebar {
+    position: fixed;
+    position: fixed;
+    top: 1%;
+    bottom: 0;
+    left: 0;
+    padding: 0 0 0; /* Height of navbar */
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+    width: 300px;
+    z-index: 600;
+    }
+    
+    @media (max-width: 991.98px) {
+    .sidebar {
+    width: 100%;
+    }
+    }
+    .sidebar .active {
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+    }
+    
+    .sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    }

@@ -64,3 +64,7 @@ def profileUpdates(request):
     else:
         form=ProfileForm(instance=profile)
     return render(request,'editProfile.html',{'form':form})
+
+@login_required(login_url='loginpage')
+def savings(request):
+    return render(request,'saving.html')

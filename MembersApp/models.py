@@ -33,3 +33,13 @@ class Profile(models.Model):
         instance.profile.save()
     def saveProfile(self):
         self.user()
+        
+class Saving(models.Model):
+    amount = models.IntegerField()
+    member_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    date_contributed = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        ordering = ['-date_contributed']

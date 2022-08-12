@@ -12,4 +12,5 @@ urlpatterns = [
     path('profileUpdates', views.profileUpdates, name='profileUpdates'),
     path('savings', views.savings, name='savings'),
     path('members', views.members, name='members'),
+    path('deleteMember/<member_id>', views.deleteMember, name='deleteMember'),
 ]

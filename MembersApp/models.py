@@ -45,6 +45,10 @@ class Member(models.Model):
     
     def __str__(self):
         return self.fullname
+    
+    class Meta:
+        ordering = ['-date_joined']
+        
 
 class Saving(models.Model):
     member_id = models.ForeignKey(Member, on_delete=models.CASCADE)
@@ -52,7 +56,16 @@ class Saving(models.Model):
     date_contributed = models.DateTimeField(auto_now_add=True)
     admin= models.ForeignKey(Profile, on_delete=models.CASCADE)
     def __str__(self):
-        return self.member_id.fullname
-    
+        return self.member_id.fullname    
     class Meta:
         ordering = ['-date_contributed']
+        
+# class LoansRequest(models.Model):
+#     member_id = models.ForeignKey(Member, on_delete=models.CASCADE)
+#     amount_requested = models.IntegerField()
+#     date_contributed = models.DateTimeField(auto_now_add=True)
+#     admin= models.ForeignKey(Profile, on_delete=models.CASCADE)
+    
+    # @property
+    # def loanlimit (self):
+    #     limit = 

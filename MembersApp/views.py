@@ -98,3 +98,13 @@ def members(request):
         form = MembersForm()
     context={'members':members, 'form':form}
     return render(request,'member.html',context)
+
+def deleteMember(request, member_id):
+    members=Member.objects.get(id=memberid)
+    members.delete()
+    return redirect('members')
+
+# def deleteMember(request, member_id):
+#     members = get_object_or_404(Member, id=member_id)
+#     members.delete()
+#     return redirect('member')
